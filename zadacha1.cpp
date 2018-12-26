@@ -6,8 +6,7 @@
 
 using namespace std;
 
-struct Student
-{
+struct Student{
 	string Name;
 	string GroupId;
 	map<string, unsigned> Ratings;
@@ -56,8 +55,7 @@ void PrintStudents(Student st) {
 	cout << endl;
 }
 
-int main()
-{
+int main(){
 	vector<Student> students{ 
 	{ "Melnikov Anton","IU8-32",{ { "Mathematics",4 },{ "Politology",5 },{ "Physics",5 } } },
 	{ "Gorbatski Artem","IU8-32",{ { "Mathematics", 4 },{ "Politology",5 },{ "Physics",4 } } },
@@ -83,7 +81,9 @@ int main()
 	sort(students.begin(), students.end(), [](Student a, Student b) {
 		return (a.RatingCompare()>b.RatingCompare());
 	});
+
 	cout << "Ratings sorting"<<endl;
+
 	for (int i = 0; i < students.size(); i++) {
 		PrintStudents(students[i]);
 	}
@@ -97,14 +97,14 @@ int main()
 	int NumOtl = count_if(students.begin(), students.end(), [](Student a) {
 		return a.otlichno();
 	});
-	cout << "Number of  students with all 5: " << NumOtl <<endl<<endl;
-	cout<<endl<<endl;
-
+	cout << "Number of  students with all 5: " << NumOtl <<endl<<endl<<endl<<endl;
+	
 
 	int NumMathOtl = count_if(students.begin(), students.end(), [](Student a) {
 		return a.Mathematics();
 	});
 	vector<Student> MathOtl(NumMathOtl);
+
 	copy_if(students.begin(), students.end(), MathOtl.begin(), [](Student a) {
 		return a.Mathematics();
 	});
@@ -118,11 +118,13 @@ int main()
 		return Politology(a);
 	});
 	cout << "Giving 4 on Politologyology to all students"<<endl;
+
 	for (int i = 0; i < students.size(); i++) {
 		PrintStudents(students[i]);
 	}
 	cout <<endl<<endl;
 
-	cin.get(); cin.get();
+	cin.get(); 
+  cin.get();
 	return 0;
 }
